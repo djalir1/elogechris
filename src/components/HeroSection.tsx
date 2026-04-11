@@ -4,12 +4,14 @@ import heroImage from "@/assets/hero-profile.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center section-padding pt-32 relative overflow-hidden">
-      {/* Background accent */}
+    <section className="min-h-screen flex items-center section-padding pt-32 pb-20 relative overflow-hidden">
+      {/* Background accents */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+        
+        {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,6 +28,7 @@ const HeroSection = () => {
           <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed mb-10">
             Designing meaningful digital experiences that connect users and businesses.
           </p>
+
           <div className="flex flex-wrap gap-4">
             <a
               href="#projects"
@@ -44,23 +47,28 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
+        {/* Right Image - BIGGER on Mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative flex justify-center lg:justify-end"
         >
-          <div className="relative">
-            <div className="w-72 h-72 md:w-96 md:h-[28rem] rounded-2xl overflow-hidden border-2 border-primary/20">
+          <div className="relative w-full flex justify-center lg:justify-end">
+            
+            {/* Main Image Container */}
+            <div className="relative w-[88vw] max-w-[340px] sm:max-w-[380px] md:w-96 md:max-w-none aspect-[4/5] rounded-3xl overflow-hidden border-2 border-primary/20 shadow-2xl">
               <img
                 src={heroImage}
                 alt="Eloge Chris - Designer"
                 className="w-full h-full object-cover"
                 width={800}
-                height={1024}
+                height={1000}
               />
             </div>
-            <div className="absolute -bottom-4 -right-4 w-72 h-72 md:w-96 md:h-[28rem] rounded-2xl border border-primary/30 -z-10" />
+
+            {/* Decorative Offset Border */}
+            <div className="absolute -bottom-6 -right-6 w-[88vw] max-w-[340px] sm:max-w-[380px] md:w-96 md:max-w-none aspect-[4/5] rounded-3xl border border-primary/30 -z-10" />
           </div>
         </motion.div>
       </div>
