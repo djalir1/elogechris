@@ -32,17 +32,31 @@ import projectWeb1 from "@/assets/project-web-1.jpg";
 import projectBranding1 from "@/assets/project-branding-1.jpg";
 import projectMobile2 from "@/assets/project-mobile-2.jpg";
 import projectPoster1 from "@/assets/project-poster-1.jpg";
-
 import mockupcreconnect from "@/assets/Mockup creconnect copy.png";
 import branding from "@/assets/branding.png";
 import olcwebdesign from "@/assets/olcwebdesign.png";
 import dashboard from "@/assets/dashboard.png";
-import clothingapp from "@/assets/clothingapp.png";   // ← New Clothing App added
+import clothingapp from "@/assets/clothingapp.png";
 
-const filters = ["All", "UI/UX", "Web Design", "App Design", "Branding", "Graphic Design"];
+// Flyers
+import burgerFlyer from "@/assets/bur.jpeg";
+import africaqueen from "@/assets/Africaqueen.png";
+import bestgadgetsflyer from "@/assets/bestgadgetsflyer.png";
+import carFlyer from "@/assets/car_flyer.png";
+import carrental from "@/assets/carrental.png";
+import doveProduct from "@/assets/dove_product.jpeg";
+import f1 from "@/assets/f1.png";
+import farmersDay from "@/assets/farmer_s_day.jpg";
+import plateflyer from "@/assets/Plateflyer.png";
+import productFlyer from "@/assets/product_flyer.jpeg";
+import shoeflyer from "@/assets/shoeflyer.png";
+import womensDayFlyer from "@/assets/womens_day_flyer.png";
+import freshjuiceFlyer from "@/assets/freshjuice_flyer.png";
+
+const filters = ["All", "UI/UX", "Web Design", "App Design", "Graphic Design"];
 
 const projects = [
-  // ==================== UI/UX (3 Mobile Apps + 3 Web Designs) ====================
+  // ==================== UI/UX ====================
   {
     title: "GreenRide Meter App",
     category: "UI/UX",
@@ -79,7 +93,7 @@ const projects = [
     solution: "Real-time analytics dashboard with intuitive layout.",
     outcome: "Better visibility for the team.",
   },
-    {
+  {
     title: "FitTrack Mobile App",
     category: "UI/UX",
     image: projectMobile1,
@@ -107,7 +121,7 @@ const projects = [
     outcome: "Improved hiring workflow efficiency.",
   },
 
-  // ==================== Web Design (All websites & dashboards) ====================
+  // ==================== Web Design ====================
   {
     title: "Iwacu Coffee Website",
     category: "Web Design",
@@ -126,7 +140,7 @@ const projects = [
     solution: "Clean modern logistics website.",
     outcome: "Increased client trust.",
   },
-   {
+  {
     title: "E-Commerce Platform Redesign",
     category: "Web Design",
     image: projectWeb1,
@@ -217,7 +231,16 @@ const projects = [
     outcome: "Improved hiring workflow efficiency.",
   },
 
-  // ==================== App Design (Every Mobile App - including the new Clothing App) ====================
+  // ==================== App Design ====================
+  {
+    title: "BlissCoffee Mobile App",
+    category: "App Design",
+    image: coffeeapp,
+    problem: "Coffee brand needed an immersive mobile ordering experience.",
+    process: "Dark-themed mobile UI with product discovery and cart flow.",
+    solution: "Rich coffee app with category browsing, item details, and ordering.",
+    outcome: "Elevated mobile brand experience for coffee lovers.",
+  },
   {
     title: "GreenRide Meter App",
     category: "App Design",
@@ -236,7 +259,6 @@ const projects = [
     solution: "Modern, safe, and intuitive dating experience.",
     outcome: "Improved user engagement and trust.",
   },
-
   {
     title: "Food Ordering App",
     category: "App Design",
@@ -246,7 +268,7 @@ const projects = [
     solution: "Smooth and beautiful food delivery interface.",
     outcome: "Faster ordering and higher satisfaction.",
   },
-    {
+  {
     title: "FitTrack Mobile App",
     category: "App Design",
     image: projectMobile1,
@@ -255,7 +277,7 @@ const projects = [
     solution: "Clean dark-theme mobile app with intuitive dashboard.",
     outcome: "40% increase in daily active users within 3 months.",
   },
-    {
+  {
     title: "Food Delivery App",
     category: "App Design",
     image: projectMobile2,
@@ -274,7 +296,7 @@ const projects = [
     outcome: "Simplified premium rental experience.",
   },
   {
-    title: "BlissCoffee Mobile App",
+    title: "BlissCoffee Mobile App v2",
     category: "App Design",
     image: coffeeapp2,
     problem: "Coffee shop app needed better product display and ordering.",
@@ -292,10 +314,10 @@ const projects = [
     outcome: "Engaging shopping experience with strong visual appeal.",
   },
 
-  // ==================== Branding (Full Brand Identities) ====================
+  // ==================== Graphic Design — Brand Identities ====================
   {
     title: "CRECONNECT Brand Identity",
-    category: "Branding",
+    category: "Graphic Design",
     image: crebranding,
     problem: "New creative platform needed a strong memorable brand.",
     process: "Logo design and full brand system.",
@@ -304,16 +326,16 @@ const projects = [
   },
   {
     title: "Sukaba LLC Brand Identity",
-    category: "Branding",
+    category: "Graphic Design",
     image: sukababranding,
     problem: "Consulting firm needed a trustworthy corporate identity.",
     process: "Logo and full branding package.",
     solution: "Growth-oriented logo with business stationery.",
     outcome: "Strong professional brand presence.",
   },
-    {
+  {
     title: "Brand Identity – Isanny Court",
-    category: "Branding",
+    category: "Graphic Design",
     image: projectBranding1,
     problem: "New hospitality brand needed a premium visual identity.",
     process: "Brand strategy workshop, mood boards, multiple iterations.",
@@ -322,7 +344,7 @@ const projects = [
   },
   {
     title: "Fastbreak Trading Brand Identity",
-    category: "Branding",
+    category: "Graphic Design",
     image: fastbreakm,
     problem: "Trading company needed a dynamic brand look.",
     process: "Bold logo and full merchandise branding.",
@@ -330,7 +352,7 @@ const projects = [
     outcome: "Memorable brand across all touchpoints.",
   },
 
-  // ==================== Graphic Design (Logos only) ====================
+  // ==================== Graphic Design — Logos ====================
   {
     title: "Iwacu Remit Logo",
     category: "Graphic Design",
@@ -357,15 +379,6 @@ const projects = [
     process: "Logo design with logistics elements.",
     solution: "Professional trading company logo.",
     outcome: "Strong market brand presence.",
-  },
-    {
-    title: "Event Poster Series",
-    category: "Graphic Design",
-    image: projectPoster1,
-    problem: "Events lacked visual appeal and attendance was low.",
-    process: "Creative direction, typography exploration, print-ready design.",
-    solution: "Bold, eye-catching poster series with strong hierarchy.",
-    outcome: "30% increase in event attendance after visual rebrand.",
   },
   {
     title: "Sukaba LLC Logo",
@@ -403,6 +416,125 @@ const projects = [
     solution: "Dynamic and contemporary GenzuraDrive logo.",
     outcome: "Clear and modern logo for the brand.",
   },
+
+  // ==================== Graphic Design — Flyers & Social Media ====================
+  {
+    title: "Spicy Burger – CraveHaus Flyer",
+    category: "Graphic Design",
+    image: burgerFlyer,
+    problem: "Food brand needed a high-impact promotional flyer.",
+    process: "Bold food photography layout with strong typographic hierarchy.",
+    solution: "Eye-catching burger promo flyer with discount badge.",
+    outcome: "Strong appetite appeal for social media marketing.",
+  },
+  {
+    title: "African Queen – Culture Poster",
+    category: "Graphic Design",
+    image: africaqueen,
+    problem: "Brand needed a powerful cultural celebration design.",
+    process: "Editorial-style poster composition with rich earthy tones.",
+    solution: "Elegant African Queen poster celebrating Black beauty.",
+    outcome: "Compelling cultural statement with premium visual quality.",
+  },
+  {
+    title: "Batife Premium Gadgets – Business Flyer",
+    category: "Graphic Design",
+    image: bestgadgetsflyer,
+    problem: "Tech gadget store needed a grand opening announcement.",
+    process: "Bold purple brand aesthetic with product and lifestyle imagery.",
+    solution: "Professional 'Open for Business' launch flyer with contact details.",
+    outcome: "Strong brand impression for the Kigali gadget market.",
+  },
+  {
+    title: "GenzuraDrive – Car Promo Flyer",
+    category: "Graphic Design",
+    image: carFlyer,
+    problem: "Fleet management brand needed an attention-grabbing ad.",
+    process: "Minimalist split-composition with bold typography.",
+    solution: "Striking 'Drive Your Dream Car Today' promotional poster.",
+    outcome: "High visual impact for fleet rental marketing.",
+  },
+  {
+    title: "Auto Plug – Car Sales Flyer",
+    category: "Graphic Design",
+    image: carrental,
+    problem: "Car dealership needed a bold multi-vehicle showcase flyer.",
+    process: "Red and white brand layout with vehicle photography.",
+    solution: "Professional car sales flyer highlighting buy, sell, and swap.",
+    outcome: "Clear and trust-building dealership advertisement.",
+  },
+  {
+    title: "Dove Body Love – Product Ad",
+    category: "Graphic Design",
+    image: doveProduct,
+    problem: "Beauty brand needed a premium product feature visual.",
+    process: "Luxury editorial layout with ingredient storytelling.",
+    solution: "Clean product poster for Dove Hand Cream with ingredient callouts.",
+    outcome: "Polished product visual for skincare marketing.",
+  },
+  {
+    title: "Best Gadgets – Tech Store Flyer",
+    category: "Graphic Design",
+    image: f1,
+    problem: "Phone accessories store needed a bold brand statement.",
+    process: "Dark purple tech aesthetic with phone imagery.",
+    solution: "Dynamic gadget store flyer for Kigali market.",
+    outcome: "Effective promotional material for social media.",
+  },
+  {
+    title: "Africa Summing – Farmer's Day Poster",
+    category: "Graphic Design",
+    image: farmersDay,
+    problem: "Agriculture brand needed a meaningful celebration poster.",
+    process: "Lush green overlay with real farmer photography.",
+    solution: "Impactful Farmer's Day social poster for Africa Summing.",
+    outcome: "Warm, community-driven brand visual.",
+  },
+  {
+    title: "Good Food Good Vibes – Restaurant Flyer",
+    category: "Graphic Design",
+    image: plateflyer,
+    problem: "Local food outlet needed a vibrant social media flyer.",
+    process: "Bold orange and green palette with playful typography.",
+    solution: "Energetic food poster with call-to-action and contact details.",
+    outcome: "Appetite-driving social content for BestFood restaurant.",
+  },
+  {
+    title: "Leomasucre – Fresh Juice Product Ad",
+    category: "Graphic Design",
+    image: productFlyer,
+    problem: "Beverage brand needed a refreshing product visual.",
+    process: "Dynamic bottle photography with citrus splash elements.",
+    solution: "Vibrant fresh juice poster with water splash composition.",
+    outcome: "Premium beverage ad with strong shelf-appeal aesthetic.",
+  },
+  {
+    title: "GEL-KAYANO 14 – Shoe Product Poster",
+    category: "Graphic Design",
+    image: shoeflyer,
+    problem: "Sports brand needed a premium sneaker feature poster.",
+    process: "Editorial typographic layout with technical product specs.",
+    solution: "Bold multi-angle shoe poster in editorial magazine style.",
+    outcome: "High-end product visual for sneaker marketing.",
+  },
+  {
+    title: "International Women's Day – CRenet Poster",
+    category: "Graphic Design",
+    image: womensDayFlyer,
+    problem: "Creative agency needed a meaningful Women's Day post.",
+    process: "Floral collage with diverse portrait photography.",
+    solution: "Elegant celebration poster honoring women across sectors.",
+    outcome: "Emotionally resonant social media post for the occasion.",
+  },
+  {
+    title: "Yura Fresh Juice – Product Flyer",
+    category: "Graphic Design",
+    image: freshjuiceFlyer,
+    problem: "Juice brand needed a bold and fresh product advertisement.",
+    process: "Teal background with dynamic orange and juice splash photography.",
+    solution: "Eye-catching fresh juice product poster with Order Now CTA.",
+    outcome: "Vibrant, conversion-focused beverage marketing visual.",
+  },
 ];
 
 const ProjectsSection = () => {
@@ -410,9 +542,10 @@ const ProjectsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filtered = activeFilter === "All"
-    ? projects
-    : projects.filter((p) => p.category === activeFilter);
+  const filtered =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
 
   return (
     <section id="projects" className="section-padding bg-card" ref={ref}>
@@ -422,7 +555,9 @@ const ProjectsSection = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary font-medium text-sm tracking-widest uppercase mb-3">Projects</p>
+          <p className="text-primary font-medium text-sm tracking-widest uppercase mb-3">
+            Projects
+          </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-8">
             Selected Work<span className="text-primary">.</span>
           </h2>
@@ -449,10 +584,10 @@ const ProjectsSection = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {filtered.map((project, i) => (
             <motion.div
-              key={project.title}
+              key={`${activeFilter}-${project.title}-${i}`}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
               className="group rounded-3xl overflow-hidden bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-2xl"
             >
               <div className="aspect-[16/10] overflow-hidden">
@@ -467,13 +602,27 @@ const ProjectsSection = () => {
                 <span className="inline-block px-4 py-1 text-xs font-semibold tracking-widest bg-primary/10 text-primary rounded-full mb-4">
                   {project.category}
                 </span>
-                <h3 className="text-2xl font-bold text-foreground mb-5 leading-tight">{project.title}</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-5 leading-tight">
+                  {project.title}
+                </h3>
 
                 <div className="space-y-4 text-sm text-muted-foreground">
-                  <p><span className="font-semibold text-foreground">Problem: </span>{project.problem}</p>
-                  <p><span className="font-semibold text-foreground">Process: </span>{project.process}</p>
-                  <p><span className="font-semibold text-foreground">Solution: </span>{project.solution}</p>
-                  <p><span className="font-semibold text-foreground">Outcome: </span><span className="text-primary font-medium">{project.outcome}</span></p>
+                  <p>
+                    <span className="font-semibold text-foreground">Problem: </span>
+                    {project.problem}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Process: </span>
+                    {project.process}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Solution: </span>
+                    {project.solution}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Outcome: </span>
+                    <span className="text-primary font-medium">{project.outcome}</span>
+                  </p>
                 </div>
               </div>
             </motion.div>
