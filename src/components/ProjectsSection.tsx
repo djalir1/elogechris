@@ -36,6 +36,7 @@ import mockupcreconnect from "@/assets/Mockup creconnect copy.png";
 import branding from "@/assets/branding.png";
 import olcwebdesign from "@/assets/olcwebdesign.png";
 import dashboard from "@/assets/dashboard.png";
+import radarBranding from "@/assets/branding.png";
 import clothingapp from "@/assets/clothingapp.png";
 
 // Flyers
@@ -341,6 +342,15 @@ const projects = [
     process: "Brand strategy workshop, mood boards, multiple iterations.",
     solution: "Complete brand package: logo, stationery, business cards.",
     outcome: "Successfully launched brand with consistent recognition.",
+  },
+    {
+    title: "RADAR Technology Brand Identity",
+    category: "Graphic Design",
+    image: radarBranding,
+    problem: "A technology company needed a modern and technical brand identity that reflects innovation and precision.",
+    process: "Full brand development including circuit-inspired logo design, color system, and extensive mockup applications.",
+    solution: "Clean stylized 'R' logo with circuit elements in professional blue tones, applied across server signage, business cards, tablet, jacket, rugged case, and branded vehicle.",
+    outcome: "Powerful and cohesive brand presence that positions RADAR Technology as a reliable and cutting-edge player in the tech industry.",
   },
   {
     title: "Fastbreak Trading Brand Identity",
