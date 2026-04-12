@@ -315,131 +315,235 @@ const projects = [
     outcome: "Engaging shopping experience with strong visual appeal.",
   },
 
-  // ==================== Graphic Design (Clean - Title + Category Only) ====================
+  // ==================== Graphic Design — Brand Identities ====================
   {
     title: "CRECONNECT Brand Identity",
     category: "Graphic Design",
     image: crebranding,
+    problem: "New creative platform needed a strong memorable brand.",
+    process: "Logo design and full brand system.",
+    solution: "Modern infinity logo with complete collateral.",
+    outcome: "Professional and cohesive brand identity.",
   },
   {
     title: "Sukaba LLC Brand Identity",
     category: "Graphic Design",
     image: sukababranding,
+    problem: "Consulting firm needed a trustworthy corporate identity.",
+    process: "Logo and full branding package.",
+    solution: "Growth-oriented logo with business stationery.",
+    outcome: "Strong professional brand presence.",
   },
   {
     title: "Brand Identity – Isanny Court",
     category: "Graphic Design",
     image: projectBranding1,
+    problem: "New hospitality brand needed a premium visual identity.",
+    process: "Brand strategy workshop, mood boards, multiple iterations.",
+    solution: "Complete brand package: logo, stationery, business cards.",
+    outcome: "Successfully launched brand with consistent recognition.",
   },
-  {
+    {
     title: "RADAR Technology Brand Identity",
     category: "Graphic Design",
     image: radarBranding,
+    problem: "A technology company needed a modern and technical brand identity that reflects innovation and precision.",
+    process: "Full brand development including circuit-inspired logo design, color system, and extensive mockup applications.",
+    solution: "Clean stylized 'R' logo with circuit elements in professional blue tones, applied across server signage, business cards, tablet, jacket, rugged case, and branded vehicle.",
+    outcome: "Powerful and cohesive brand presence that positions RADAR Technology as a reliable and cutting-edge player in the tech industry.",
   },
   {
     title: "Fastbreak Trading Brand Identity",
     category: "Graphic Design",
     image: fastbreakm,
+    problem: "Trading company needed a dynamic brand look.",
+    process: "Bold logo and full merchandise branding.",
+    solution: "Energetic arrow logo with complete assets.",
+    outcome: "Memorable brand across all touchpoints.",
   },
+
+  // ==================== Graphic Design — Logos ====================
   {
     title: "Iwacu Remit Logo",
     category: "Graphic Design",
     image: iwacuremit,
+    problem: "Remittance service needed a clean and trustworthy logo.",
+    process: "Logo design focused on finance and security.",
+    solution: "Modern shield-inspired logo for Iwacu Remit.",
+    outcome: "Clear and professional brand mark.",
   },
   {
     title: "RADAR Technology Logo",
     category: "Graphic Design",
     image: radarlogo,
+    problem: "Tech company needed a modern and technical brand symbol.",
+    process: "Circuit-inspired logo design.",
+    solution: "Stylized R logo representing technology and connectivity.",
+    outcome: "Strong tech brand identity.",
   },
   {
     title: "Sunshine Trading Logo",
     category: "Graphic Design",
     image: sunshinetrading,
+    problem: "Trading company needed a global yet local brand mark.",
+    process: "Logo design with logistics elements.",
+    solution: "Professional trading company logo.",
+    outcome: "Strong market brand presence.",
   },
   {
     title: "Sukaba LLC Logo",
     category: "Graphic Design",
     image: sukabalogo,
+    problem: "Financial consulting firm needed a clean logo.",
+    process: "Logo design with growth elements.",
+    solution: "Upward-trending logo for Sukaba LLC.",
+    outcome: "Professional corporate logo.",
   },
   {
     title: "Fastbreak Trading Logo",
     category: "Graphic Design",
     image: fastbreaklogo,
+    problem: "Trading company needed a dynamic logo.",
+    process: "Bold arrow concept logo.",
+    solution: "Circular arrow logo for Fastbreak Trading.",
+    outcome: "Memorable trading logo.",
   },
   {
     title: "CRECONNECT Logo",
     category: "Graphic Design",
     image: crelogocopy,
+    problem: "Creative platform needed a simple and modern logo.",
+    process: "Infinity-inspired logo design.",
+    solution: "Clean infinity symbol logo.",
+    outcome: "Strong minimalist logo.",
   },
   {
     title: "GenzuraDrive Logo",
     category: "Graphic Design",
     image: genzura,
+    problem: "Fleet management company needed a modern mobility logo.",
+    process: "Multiple logo explorations focused on the mark.",
+    solution: "Dynamic and contemporary GenzuraDrive logo.",
+    outcome: "Clear and modern logo for the brand.",
   },
+
+  // ==================== Graphic Design — Flyers & Social Media ====================
   {
     title: "Spicy Burger – CraveHaus Flyer",
     category: "Graphic Design",
     image: burgerFlyer,
+    problem: "Food brand needed a high-impact promotional flyer.",
+    process: "Bold food photography layout with strong typographic hierarchy.",
+    solution: "Eye-catching burger promo flyer with discount badge.",
+    outcome: "Strong appetite appeal for social media marketing.",
   },
   {
     title: "African Queen – Culture Poster",
     category: "Graphic Design",
     image: africaqueen,
+    problem: "Brand needed a powerful cultural celebration design.",
+    process: "Editorial-style poster composition with rich earthy tones.",
+    solution: "Elegant African Queen poster celebrating Black beauty.",
+    outcome: "Compelling cultural statement with premium visual quality.",
   },
   {
     title: "Batife Premium Gadgets – Business Flyer",
     category: "Graphic Design",
     image: bestgadgetsflyer,
+    problem: "Tech gadget store needed a grand opening announcement.",
+    process: "Bold purple brand aesthetic with product and lifestyle imagery.",
+    solution: "Professional 'Open for Business' launch flyer with contact details.",
+    outcome: "Strong brand impression for the Kigali gadget market.",
   },
   {
     title: "GenzuraDrive – Car Promo Flyer",
     category: "Graphic Design",
     image: carFlyer,
+    problem: "Fleet management brand needed an attention-grabbing ad.",
+    process: "Minimalist split-composition with bold typography.",
+    solution: "Striking 'Drive Your Dream Car Today' promotional poster.",
+    outcome: "High visual impact for fleet rental marketing.",
   },
   {
     title: "Auto Plug – Car Sales Flyer",
     category: "Graphic Design",
     image: carrental,
+    problem: "Car dealership needed a bold multi-vehicle showcase flyer.",
+    process: "Red and white brand layout with vehicle photography.",
+    solution: "Professional car sales flyer highlighting buy, sell, and swap.",
+    outcome: "Clear and trust-building dealership advertisement.",
   },
   {
     title: "Dove Body Love – Product Ad",
     category: "Graphic Design",
     image: doveProduct,
+    problem: "Beauty brand needed a premium product feature visual.",
+    process: "Luxury editorial layout with ingredient storytelling.",
+    solution: "Clean product poster for Dove Hand Cream with ingredient callouts.",
+    outcome: "Polished product visual for skincare marketing.",
   },
   {
     title: "Best Gadgets – Tech Store Flyer",
     category: "Graphic Design",
     image: f1,
+    problem: "Phone accessories store needed a bold brand statement.",
+    process: "Dark purple tech aesthetic with phone imagery.",
+    solution: "Dynamic gadget store flyer for Kigali market.",
+    outcome: "Effective promotional material for social media.",
   },
   {
     title: "Africa Summing – Farmer's Day Poster",
     category: "Graphic Design",
     image: farmersDay,
+    problem: "Agriculture brand needed a meaningful celebration poster.",
+    process: "Lush green overlay with real farmer photography.",
+    solution: "Impactful Farmer's Day social poster for Africa Summing.",
+    outcome: "Warm, community-driven brand visual.",
   },
   {
     title: "Good Food Good Vibes – Restaurant Flyer",
     category: "Graphic Design",
     image: plateflyer,
+    problem: "Local food outlet needed a vibrant social media flyer.",
+    process: "Bold orange and green palette with playful typography.",
+    solution: "Energetic food poster with call-to-action and contact details.",
+    outcome: "Appetite-driving social content for BestFood restaurant.",
   },
   {
     title: "Leomasucre – Fresh Juice Product Ad",
     category: "Graphic Design",
     image: productFlyer,
+    problem: "Beverage brand needed a refreshing product visual.",
+    process: "Dynamic bottle photography with citrus splash elements.",
+    solution: "Vibrant fresh juice poster with water splash composition.",
+    outcome: "Premium beverage ad with strong shelf-appeal aesthetic.",
   },
   {
     title: "GEL-KAYANO 14 – Shoe Product Poster",
     category: "Graphic Design",
     image: shoeflyer,
+    problem: "Sports brand needed a premium sneaker feature poster.",
+    process: "Editorial typographic layout with technical product specs.",
+    solution: "Bold multi-angle shoe poster in editorial magazine style.",
+    outcome: "High-end product visual for sneaker marketing.",
   },
   {
     title: "International Women's Day – CRenet Poster",
     category: "Graphic Design",
     image: womensDayFlyer,
+    problem: "Creative agency needed a meaningful Women's Day post.",
+    process: "Floral collage with diverse portrait photography.",
+    solution: "Elegant celebration poster honoring women across sectors.",
+    outcome: "Emotionally resonant social media post for the occasion.",
   },
   {
     title: "Yura Fresh Juice – Product Flyer",
     category: "Graphic Design",
     image: freshjuiceFlyer,
+    problem: "Juice brand needed a bold and fresh product advertisement.",
+    process: "Teal background with dynamic orange and juice splash photography.",
+    solution: "Eye-catching fresh juice product poster with Order Now CTA.",
+    outcome: "Vibrant, conversion-focused beverage marketing visual.",
   },
 ];
 
@@ -488,39 +592,51 @@ const ProjectsSection = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {filtered.map((project, i) => {
-            const isGraphicDesign = project.category === "Graphic Design";
+          {filtered.map((project, i) => (
+            <motion.div
+              key={`${activeFilter}-${project.title}-${i}`}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="group rounded-3xl overflow-hidden bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-2xl"
+            >
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-8">
+                <span className="inline-block px-4 py-1 text-xs font-semibold tracking-widest bg-primary/10 text-primary rounded-full mb-4">
+                  {project.category}
+                </span>
+                <h3 className="text-2xl font-bold text-foreground mb-5 leading-tight">
+                  {project.title}
+                </h3>
 
-            return (
-              <motion.div
-                key={`${activeFilter}-${project.title}-${i}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="group rounded-3xl overflow-hidden bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-2xl"
-              >
-                {/* Larger and freer image area for Graphic Design (Flyers & Branding) */}
-                <div className={`overflow-hidden ${isGraphicDesign ? "aspect-[5/6]" : "aspect-[16/10]"}`}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
+                <div className="space-y-4 text-sm text-muted-foreground">
+                  <p>
+                    <span className="font-semibold text-foreground">Problem: </span>
+                    {project.problem}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Process: </span>
+                    {project.process}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Solution: </span>
+                    {project.solution}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Outcome: </span>
+                    <span className="text-primary font-medium">{project.outcome}</span>
+                  </p>
                 </div>
-
-                <div className="p-8">
-                  <span className="inline-block px-4 py-1 text-xs font-semibold tracking-widest bg-primary/10 text-primary rounded-full mb-4">
-                    {project.category}
-                  </span>
-
-                  <h3 className="text-2xl font-bold text-foreground leading-tight">
-                    {project.title}
-                  </h3>
-                </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
