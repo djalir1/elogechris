@@ -27,6 +27,10 @@ import radarlogo from "@/assets/radar logo.jpg";
 import rentalapp from "@/assets/rentalapp .png";
 import furniturewebM from "@/assets/furniturewebM.png";
 import hospitalweb from "@/assets/hospitalweb.png";
+import projectMobile1 from "@/assets/project-mobile-1.jpg";
+import projectWeb1 from "@/assets/project-web-1.jpg";
+import projectBranding1 from "@/assets/project-branding-1.jpg";
+
 import mockupcreconnect from "@/assets/Mockup creconnect copy.png";
 import branding from "@/assets/branding.png";
 import olcwebdesign from "@/assets/olcwebdesign.png";
@@ -110,6 +114,15 @@ const projects = [
     process: "Corporate web design focused on services.",
     solution: "Clean modern logistics website.",
     outcome: "Increased client trust.",
+  },
+   {
+    title: "E-Commerce Platform Redesign",
+    category: "Web Design",
+    image: projectWeb1,
+    problem: "Low conversion rate on existing e-commerce site.",
+    process: "Competitive analysis, user journey mapping, A/B testing.",
+    solution: "Modernized UI with streamlined checkout flow.",
+    outcome: "15% increase in conversion rate, 25% reduction in cart abandonment.",
   },
   {
     title: "Furniture Store Website",
@@ -213,6 +226,15 @@ const projects = [
     outcome: "Improved user engagement and trust.",
   },
   {
+    title: "FitTrack Mobile App",
+    category: "UI/UX",
+    image: projectMobile1,
+    problem: "Users struggled to track fitness progress consistently.",
+    process: "User research, wireframing, prototyping, usability testing.",
+    solution: "Clean dark-theme mobile app with intuitive dashboard.",
+    outcome: "40% increase in daily active users within 3 months.",
+  },
+  {
     title: "Food Ordering App",
     category: "App Design",
     image: foodorderapp,
@@ -268,6 +290,15 @@ const projects = [
     solution: "Growth-oriented logo with business stationery.",
     outcome: "Strong professional brand presence.",
   },
+    {
+    title: "Brand Identity – Isanny Court",
+    category: "Branding",
+    image: projectBranding1,
+    problem: "New hospitality brand needed a premium visual identity.",
+    process: "Brand strategy workshop, mood boards, multiple iterations.",
+    solution: "Complete brand package: logo, stationery, business cards.",
+    outcome: "Successfully launched brand with consistent recognition.",
+  },
   {
     title: "Fastbreak Trading Brand Identity",
     category: "Branding",
@@ -297,6 +328,7 @@ const projects = [
     solution: "Stylized R logo representing technology and connectivity.",
     outcome: "Strong tech brand identity.",
   },
+  
   {
     title: "Sunshine Trading Logo",
     category: "Graphic Design",
