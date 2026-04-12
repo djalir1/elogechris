@@ -315,7 +315,7 @@ const projects = [
     outcome: "Engaging shopping experience with strong visual appeal.",
   },
 
-  // ==================== Graphic Design — Brand Identities ====================
+  // ==================== Graphic Design (Branding & Logos - keep descriptions) ====================
   {
     title: "CRECONNECT Brand Identity",
     category: "Graphic Design",
@@ -343,14 +343,14 @@ const projects = [
     solution: "Complete brand package: logo, stationery, business cards.",
     outcome: "Successfully launched brand with consistent recognition.",
   },
-    {
+  {
     title: "RADAR Technology Brand Identity",
     category: "Graphic Design",
     image: radarBranding,
     problem: "A technology company needed a modern and technical brand identity that reflects innovation and precision.",
     process: "Full brand development including circuit-inspired logo design, color system, and extensive mockup applications.",
-    solution: "Clean stylized 'R' logo with circuit elements in professional blue tones, applied across server signage, business cards, tablet, jacket, rugged case, and branded vehicle.",
-    outcome: "Powerful and cohesive brand presence that positions RADAR Technology as a reliable and cutting-edge player in the tech industry.",
+    solution: "Clean stylized 'R' logo with circuit elements in professional blue tones.",
+    outcome: "Powerful and cohesive brand presence.",
   },
   {
     title: "Fastbreak Trading Brand Identity",
@@ -361,8 +361,6 @@ const projects = [
     solution: "Energetic arrow logo with complete assets.",
     outcome: "Memorable brand across all touchpoints.",
   },
-
-  // ==================== Graphic Design — Logos ====================
   {
     title: "Iwacu Remit Logo",
     category: "Graphic Design",
@@ -427,123 +425,71 @@ const projects = [
     outcome: "Clear and modern logo for the brand.",
   },
 
-  // ==================== Graphic Design — Flyers & Social Media ====================
+  // ==================== Flyers Only (Larger Image + No Description) ====================
   {
     title: "Spicy Burger – CraveHaus Flyer",
     category: "Graphic Design",
     image: burgerFlyer,
-    problem: "Food brand needed a high-impact promotional flyer.",
-    process: "Bold food photography layout with strong typographic hierarchy.",
-    solution: "Eye-catching burger promo flyer with discount badge.",
-    outcome: "Strong appetite appeal for social media marketing.",
   },
   {
     title: "African Queen – Culture Poster",
     category: "Graphic Design",
     image: africaqueen,
-    problem: "Brand needed a powerful cultural celebration design.",
-    process: "Editorial-style poster composition with rich earthy tones.",
-    solution: "Elegant African Queen poster celebrating Black beauty.",
-    outcome: "Compelling cultural statement with premium visual quality.",
   },
   {
     title: "Batife Premium Gadgets – Business Flyer",
     category: "Graphic Design",
     image: bestgadgetsflyer,
-    problem: "Tech gadget store needed a grand opening announcement.",
-    process: "Bold purple brand aesthetic with product and lifestyle imagery.",
-    solution: "Professional 'Open for Business' launch flyer with contact details.",
-    outcome: "Strong brand impression for the Kigali gadget market.",
   },
   {
     title: "GenzuraDrive – Car Promo Flyer",
     category: "Graphic Design",
     image: carFlyer,
-    problem: "Fleet management brand needed an attention-grabbing ad.",
-    process: "Minimalist split-composition with bold typography.",
-    solution: "Striking 'Drive Your Dream Car Today' promotional poster.",
-    outcome: "High visual impact for fleet rental marketing.",
   },
   {
     title: "Auto Plug – Car Sales Flyer",
     category: "Graphic Design",
     image: carrental,
-    problem: "Car dealership needed a bold multi-vehicle showcase flyer.",
-    process: "Red and white brand layout with vehicle photography.",
-    solution: "Professional car sales flyer highlighting buy, sell, and swap.",
-    outcome: "Clear and trust-building dealership advertisement.",
   },
   {
     title: "Dove Body Love – Product Ad",
     category: "Graphic Design",
     image: doveProduct,
-    problem: "Beauty brand needed a premium product feature visual.",
-    process: "Luxury editorial layout with ingredient storytelling.",
-    solution: "Clean product poster for Dove Hand Cream with ingredient callouts.",
-    outcome: "Polished product visual for skincare marketing.",
   },
   {
     title: "Best Gadgets – Tech Store Flyer",
     category: "Graphic Design",
     image: f1,
-    problem: "Phone accessories store needed a bold brand statement.",
-    process: "Dark purple tech aesthetic with phone imagery.",
-    solution: "Dynamic gadget store flyer for Kigali market.",
-    outcome: "Effective promotional material for social media.",
   },
   {
     title: "Africa Summing – Farmer's Day Poster",
     category: "Graphic Design",
     image: farmersDay,
-    problem: "Agriculture brand needed a meaningful celebration poster.",
-    process: "Lush green overlay with real farmer photography.",
-    solution: "Impactful Farmer's Day social poster for Africa Summing.",
-    outcome: "Warm, community-driven brand visual.",
   },
   {
     title: "Good Food Good Vibes – Restaurant Flyer",
     category: "Graphic Design",
     image: plateflyer,
-    problem: "Local food outlet needed a vibrant social media flyer.",
-    process: "Bold orange and green palette with playful typography.",
-    solution: "Energetic food poster with call-to-action and contact details.",
-    outcome: "Appetite-driving social content for BestFood restaurant.",
   },
   {
     title: "Leomasucre – Fresh Juice Product Ad",
     category: "Graphic Design",
     image: productFlyer,
-    problem: "Beverage brand needed a refreshing product visual.",
-    process: "Dynamic bottle photography with citrus splash elements.",
-    solution: "Vibrant fresh juice poster with water splash composition.",
-    outcome: "Premium beverage ad with strong shelf-appeal aesthetic.",
   },
   {
     title: "GEL-KAYANO 14 – Shoe Product Poster",
     category: "Graphic Design",
     image: shoeflyer,
-    problem: "Sports brand needed a premium sneaker feature poster.",
-    process: "Editorial typographic layout with technical product specs.",
-    solution: "Bold multi-angle shoe poster in editorial magazine style.",
-    outcome: "High-end product visual for sneaker marketing.",
   },
   {
     title: "International Women's Day – CRenet Poster",
     category: "Graphic Design",
     image: womensDayFlyer,
-    problem: "Creative agency needed a meaningful Women's Day post.",
-    process: "Floral collage with diverse portrait photography.",
-    solution: "Elegant celebration poster honoring women across sectors.",
-    outcome: "Emotionally resonant social media post for the occasion.",
   },
   {
     title: "Yura Fresh Juice – Product Flyer",
     category: "Graphic Design",
     image: freshjuiceFlyer,
-    problem: "Juice brand needed a bold and fresh product advertisement.",
-    process: "Teal background with dynamic orange and juice splash photography.",
-    solution: "Eye-catching fresh juice product poster with Order Now CTA.",
-    outcome: "Vibrant, conversion-focused beverage marketing visual.",
   },
 ];
 
@@ -592,51 +538,76 @@ const ProjectsSection = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {filtered.map((project, i) => (
-            <motion.div
-              key={`${activeFilter}-${project.title}-${i}`}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group rounded-3xl overflow-hidden bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-2xl"
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-8">
-                <span className="inline-block px-4 py-1 text-xs font-semibold tracking-widest bg-primary/10 text-primary rounded-full mb-4">
-                  {project.category}
-                </span>
-                <h3 className="text-2xl font-bold text-foreground mb-5 leading-tight">
-                  {project.title}
-                </h3>
+          {filtered.map((project, i) => {
+            // Only flyers get special treatment: larger image + no description
+            const isFlyer = [
+              "Spicy Burger – CraveHaus Flyer",
+              "African Queen – Culture Poster",
+              "Batife Premium Gadgets – Business Flyer",
+              "GenzuraDrive – Car Promo Flyer",
+              "Auto Plug – Car Sales Flyer",
+              "Dove Body Love – Product Ad",
+              "Best Gadgets – Tech Store Flyer",
+              "Africa Summing – Farmer's Day Poster",
+              "Good Food Good Vibes – Restaurant Flyer",
+              "Leomasucre – Fresh Juice Product Ad",
+              "GEL-KAYANO 14 – Shoe Product Poster",
+              "International Women's Day – CRenet Poster",
+              "Yura Fresh Juice – Product Flyer",
+            ].includes(project.title);
 
-                <div className="space-y-4 text-sm text-muted-foreground">
-                  <p>
-                    <span className="font-semibold text-foreground">Problem: </span>
-                    {project.problem}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-foreground">Process: </span>
-                    {project.process}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-foreground">Solution: </span>
-                    {project.solution}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-foreground">Outcome: </span>
-                    <span className="text-primary font-medium">{project.outcome}</span>
-                  </p>
+            return (
+              <motion.div
+                key={`${activeFilter}-${project.title}-${i}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className="group rounded-3xl overflow-hidden bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-2xl"
+              >
+                {/* Image Area: Larger for Flyers only */}
+                <div className={`overflow-hidden ${isFlyer ? "aspect-[4/5]" : "aspect-[16/10]"}`}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                <div className="p-8">
+                  <span className="inline-block px-4 py-1 text-xs font-semibold tracking-widest bg-primary/10 text-primary rounded-full mb-4">
+                    {project.category}
+                  </span>
+
+                  <h3 className="text-2xl font-bold text-foreground mb-5 leading-tight">
+                    {project.title}
+                  </h3>
+
+                  {/* Full description for non-flyers only */}
+                  {!isFlyer && project.problem && (
+                    <div className="space-y-4 text-sm text-muted-foreground">
+                      <p>
+                        <span className="font-semibold text-foreground">Problem: </span>
+                        {project.problem}
+                      </p>
+                      <p>
+                        <span className="font-semibold text-foreground">Process: </span>
+                        {project.process}
+                      </p>
+                      <p>
+                        <span className="font-semibold text-foreground">Solution: </span>
+                        {project.solution}
+                      </p>
+                      <p>
+                        <span className="font-semibold text-foreground">Outcome: </span>
+                        <span className="text-primary font-medium">{project.outcome}</span>
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
