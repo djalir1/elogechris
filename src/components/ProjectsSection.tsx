@@ -30,6 +30,8 @@ import hospitalweb from "@/assets/hospitalweb.png";
 import projectMobile1 from "@/assets/project-mobile-1.jpg";
 import projectWeb1 from "@/assets/project-web-1.jpg";
 import projectBranding1 from "@/assets/project-branding-1.jpg";
+import projectMobile2 from "@/assets/project-mobile-2.jpg";
+import projectPoster1 from "@/assets/project-poster-1.jpg";
 
 import mockupcreconnect from "@/assets/Mockup creconnect copy.png";
 import branding from "@/assets/branding.png";
@@ -76,6 +78,15 @@ const projects = [
     process: "Dashboard UI focused on clarity and insights.",
     solution: "Real-time analytics dashboard with intuitive layout.",
     outcome: "Better visibility for the team.",
+  },
+    {
+    title: "FitTrack Mobile App",
+    category: "UI/UX",
+    image: projectMobile1,
+    problem: "Users struggled to track fitness progress consistently.",
+    process: "User research, wireframing, prototyping, usability testing.",
+    solution: "Clean dark-theme mobile app with intuitive dashboard.",
+    outcome: "40% increase in daily active users within 3 months.",
   },
   {
     title: "CReconnect Studio Finder",
@@ -225,15 +236,7 @@ const projects = [
     solution: "Modern, safe, and intuitive dating experience.",
     outcome: "Improved user engagement and trust.",
   },
-  {
-    title: "FitTrack Mobile App",
-    category: "UI/UX",
-    image: projectMobile1,
-    problem: "Users struggled to track fitness progress consistently.",
-    process: "User research, wireframing, prototyping, usability testing.",
-    solution: "Clean dark-theme mobile app with intuitive dashboard.",
-    outcome: "40% increase in daily active users within 3 months.",
-  },
+
   {
     title: "Food Ordering App",
     category: "App Design",
@@ -242,6 +245,24 @@ const projects = [
     process: "User testing and flow optimization.",
     solution: "Smooth and beautiful food delivery interface.",
     outcome: "Faster ordering and higher satisfaction.",
+  },
+    {
+    title: "FitTrack Mobile App",
+    category: "App Design",
+    image: projectMobile1,
+    problem: "Users struggled to track fitness progress consistently.",
+    process: "User research, wireframing, prototyping, usability testing.",
+    solution: "Clean dark-theme mobile app with intuitive dashboard.",
+    outcome: "40% increase in daily active users within 3 months.",
+  },
+    {
+    title: "Food Delivery App",
+    category: "App Design",
+    image: projectMobile2,
+    problem: "Users found existing food ordering apps confusing.",
+    process: "User interviews, information architecture, iterative design.",
+    solution: "Multi-screen mobile app with simplified ordering flow.",
+    outcome: "Reduced average order time by 45 seconds.",
   },
   {
     title: "Luxury Car Rental App",
@@ -328,7 +349,6 @@ const projects = [
     solution: "Stylized R logo representing technology and connectivity.",
     outcome: "Strong tech brand identity.",
   },
-  
   {
     title: "Sunshine Trading Logo",
     category: "Graphic Design",
@@ -337,6 +357,15 @@ const projects = [
     process: "Logo design with logistics elements.",
     solution: "Professional trading company logo.",
     outcome: "Strong market brand presence.",
+  },
+    {
+    title: "Event Poster Series",
+    category: "Graphic Design",
+    image: projectPoster1,
+    problem: "Events lacked visual appeal and attendance was low.",
+    process: "Creative direction, typography exploration, print-ready design.",
+    solution: "Bold, eye-catching poster series with strong hierarchy.",
+    outcome: "30% increase in event attendance after visual rebrand.",
   },
   {
     title: "Sukaba LLC Logo",
