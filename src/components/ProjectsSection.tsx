@@ -54,19 +54,19 @@ import shoeflyer from "@/assets/shoeflyer.png";
 import womensDayFlyer from "@/assets/womens_day_flyer.png";
 import freshjuiceFlyer from "@/assets/freshjuice_flyer.png";
 
-// orientation controls the image container shape:
-//   "landscape" → aspect-[16/10] + object-cover   (websites, dashboards, wide mockups)
-//   "portrait"  → aspect-[3/4]   + object-cover   (mobile app screens, tall flyers)
-//   "square"    → aspect-square  + object-contain  (logos, brand marks – shows the full mark)
-
 const filters = ["All", "UI/UX", "Web Design", "App Design", "Graphic Design"];
 
+// isFlyer flag is ONLY set on the actual flyer/poster cards in Graphic Design.
+// Everything else has no isFlyer flag and gets the standard 16/10 treatment.
+// flyerOrientation controls the aspect ratio for that specific flyer:
+//   "portrait" → aspect-[3/4]   (tall flyers like Burger, Dove, Shoe, etc.)
+//   "square"   → aspect-square  (square social media posts like Farmer's Day, Women's Day)
+
 const projects = [
-  // ==================== UI/UX ====================
+  // ==================== UI/UX — standard aspect-[16/10] object-cover ====================
   {
     title: "GreenRide Meter App",
     category: "UI/UX",
-    orientation: "portrait",
     image: meterapp,
     problem: "Taxi drivers needed a simple and accurate fare calculation tool.",
     process: "User research, wireframing, prototyping, and testing.",
@@ -76,7 +76,6 @@ const projects = [
   {
     title: "Dating App Redesign",
     category: "UI/UX",
-    orientation: "portrait",
     image: dateapp,
     problem: "Users found dating apps cluttered and unsafe.",
     process: "User interviews and interface refinement.",
@@ -86,7 +85,6 @@ const projects = [
   {
     title: "Clothing & Fashion App",
     category: "UI/UX",
-    orientation: "portrait",
     image: clothingapp,
     problem: "Users needed a modern and trendy fashion shopping experience.",
     process: "Mobile-first UI design with smooth browsing and cart flow.",
@@ -96,7 +94,6 @@ const projects = [
   {
     title: "KPI Stock Management Dashboard",
     category: "UI/UX",
-    orientation: "landscape",
     image: kpiweb,
     problem: "Complex inventory system was hard to monitor.",
     process: "Dashboard UI focused on clarity and insights.",
@@ -106,7 +103,6 @@ const projects = [
   {
     title: "FitTrack Mobile App",
     category: "UI/UX",
-    orientation: "portrait",
     image: projectMobile1,
     problem: "Users struggled to track fitness progress consistently.",
     process: "User research, wireframing, prototyping, usability testing.",
@@ -116,7 +112,6 @@ const projects = [
   {
     title: "CReconnect Studio Finder",
     category: "UI/UX",
-    orientation: "landscape",
     image: creweb,
     problem: "Difficult to discover creative studios in Kigali.",
     process: "Platform interface design with strong search experience.",
@@ -126,7 +121,6 @@ const projects = [
   {
     title: "Recruitment Dashboard",
     category: "UI/UX",
-    orientation: "landscape",
     image: dashboard,
     problem: "Recruiters needed a clean overview of applications.",
     process: "Dashboard UI design focused on clarity and quick actions.",
@@ -134,11 +128,10 @@ const projects = [
     outcome: "Improved hiring workflow efficiency.",
   },
 
-  // ==================== Web Design ====================
+  // ==================== Web Design — standard aspect-[16/10] object-cover ====================
   {
     title: "Iwacu Coffee Website",
     category: "Web Design",
-    orientation: "landscape",
     image: iwacucoffee,
     problem: "Coffee brand lacked an engaging online presence.",
     process: "Atmospheric web design with strong visuals.",
@@ -148,7 +141,6 @@ const projects = [
   {
     title: "Logistics Company Website",
     category: "Web Design",
-    orientation: "landscape",
     image: logisticweb,
     problem: "Needed a professional and trustworthy website.",
     process: "Corporate web design focused on services.",
@@ -158,7 +150,6 @@ const projects = [
   {
     title: "E-Commerce Platform Redesign",
     category: "Web Design",
-    orientation: "landscape",
     image: projectWeb1,
     problem: "Low conversion rate on existing e-commerce site.",
     process: "Competitive analysis, user journey mapping, A/B testing.",
@@ -168,7 +159,6 @@ const projects = [
   {
     title: "Furniture Store Website",
     category: "Web Design",
-    orientation: "landscape",
     image: furniturewebM,
     problem: "Furniture needed better product presentation online.",
     process: "Visual-first web design.",
@@ -178,7 +168,6 @@ const projects = [
   {
     title: "Healthcare Website",
     category: "Web Design",
-    orientation: "landscape",
     image: hospitalweb,
     problem: "Medical services needed a professional digital presence.",
     process: "Trust-building healthcare web design.",
@@ -188,7 +177,6 @@ const projects = [
   {
     title: "Kaze Restaurant Website",
     category: "Web Design",
-    orientation: "landscape",
     image: kazerestraurant,
     problem: "Restaurant needed an appetizing online presence.",
     process: "Food photography and booking flow.",
@@ -198,7 +186,6 @@ const projects = [
   {
     title: "Gaming Website - KriGame",
     category: "Web Design",
-    orientation: "landscape",
     image: gamewebdesign,
     problem: "Gaming brand needed an energetic and modern website.",
     process: "Dark theme, dynamic hero, product showcase.",
@@ -208,7 +195,6 @@ const projects = [
   {
     title: "Cake & Bakery Website",
     category: "Web Design",
-    orientation: "landscape",
     image: cakeweb,
     problem: "Bakery needed attractive product display online.",
     process: "Visual-first web design with mouth-watering imagery.",
@@ -218,7 +204,6 @@ const projects = [
   {
     title: "OLC Web Design",
     category: "Web Design",
-    orientation: "landscape",
     image: olcwebdesign,
     problem: "Restaurant needed a modern and appetizing website.",
     process: "Food-focused web design.",
@@ -228,7 +213,6 @@ const projects = [
   {
     title: "KPI Stock Management Dashboard",
     category: "Web Design",
-    orientation: "landscape",
     image: kpiweb,
     problem: "Complex inventory system was hard to monitor.",
     process: "Dashboard design focused on clarity.",
@@ -238,7 +222,6 @@ const projects = [
   {
     title: "CReconnect Studio Finder",
     category: "Web Design",
-    orientation: "landscape",
     image: creweb,
     problem: "Hard to discover creative studios in Kigali.",
     process: "Platform design with powerful search.",
@@ -248,7 +231,6 @@ const projects = [
   {
     title: "Recruitment Dashboard",
     category: "Web Design",
-    orientation: "landscape",
     image: dashboard,
     problem: "Recruiters needed a clean overview of applications.",
     process: "Dashboard UI design focused on clarity and quick actions.",
@@ -256,11 +238,10 @@ const projects = [
     outcome: "Improved hiring workflow efficiency.",
   },
 
-  // ==================== App Design ====================
+  // ==================== App Design — standard aspect-[16/10] object-cover ====================
   {
     title: "BlissCoffee Mobile App",
     category: "App Design",
-    orientation: "portrait",
     image: coffeeapp,
     problem: "Coffee brand needed an immersive mobile ordering experience.",
     process: "Dark-themed mobile UI with product discovery and cart flow.",
@@ -270,7 +251,6 @@ const projects = [
   {
     title: "GreenRide Meter App",
     category: "App Design",
-    orientation: "portrait",
     image: meterapp,
     problem: "Taxi drivers needed a simple and accurate fare calculation tool.",
     process: "User research, wireframing, prototyping, and testing.",
@@ -280,7 +260,6 @@ const projects = [
   {
     title: "Dating App Redesign",
     category: "App Design",
-    orientation: "portrait",
     image: dateapp,
     problem: "Users found dating apps cluttered and unsafe.",
     process: "User interviews and interface refinement.",
@@ -290,7 +269,6 @@ const projects = [
   {
     title: "Food Ordering App",
     category: "App Design",
-    orientation: "portrait",
     image: foodorderapp,
     problem: "Complicated food ordering process frustrated users.",
     process: "User testing and flow optimization.",
@@ -300,7 +278,6 @@ const projects = [
   {
     title: "FitTrack Mobile App",
     category: "App Design",
-    orientation: "portrait",
     image: projectMobile1,
     problem: "Users struggled to track fitness progress consistently.",
     process: "User research, wireframing, prototyping, usability testing.",
@@ -310,7 +287,6 @@ const projects = [
   {
     title: "Food Delivery App",
     category: "App Design",
-    orientation: "portrait",
     image: projectMobile2,
     problem: "Users found existing food ordering apps confusing.",
     process: "User interviews, information architecture, iterative design.",
@@ -320,7 +296,6 @@ const projects = [
   {
     title: "Luxury Car Rental App",
     category: "App Design",
-    orientation: "portrait",
     image: rentalapp,
     problem: "Car rental booking was slow and confusing.",
     process: "Premium mobile-first design.",
@@ -330,7 +305,6 @@ const projects = [
   {
     title: "BlissCoffee Mobile App v2",
     category: "App Design",
-    orientation: "portrait",
     image: coffeeapp2,
     problem: "Coffee shop app needed better product display and ordering.",
     process: "Mobile UI with customization options.",
@@ -340,7 +314,6 @@ const projects = [
   {
     title: "Clothing & Fashion App",
     category: "App Design",
-    orientation: "portrait",
     image: clothingapp,
     problem: "Users needed a modern and trendy fashion shopping experience.",
     process: "Mobile-first UI design with smooth browsing and cart flow.",
@@ -348,11 +321,10 @@ const projects = [
     outcome: "Engaging shopping experience with strong visual appeal.",
   },
 
-  // ==================== Graphic Design — Brand Identities ====================
+  // ==================== Graphic Design — Brand Identities — standard aspect-[16/10] ====================
   {
     title: "CRECONNECT Brand Identity",
     category: "Graphic Design",
-    orientation: "landscape",
     image: crebranding,
     problem: "New creative platform needed a strong memorable brand.",
     process: "Logo design and full brand system.",
@@ -362,7 +334,6 @@ const projects = [
   {
     title: "Sukaba LLC Brand Identity",
     category: "Graphic Design",
-    orientation: "landscape",
     image: sukababranding,
     problem: "Consulting firm needed a trustworthy corporate identity.",
     process: "Logo and full branding package.",
@@ -372,7 +343,6 @@ const projects = [
   {
     title: "Brand Identity – Isanny Court",
     category: "Graphic Design",
-    orientation: "landscape",
     image: projectBranding1,
     problem: "New hospitality brand needed a premium visual identity.",
     process: "Brand strategy workshop, mood boards, multiple iterations.",
@@ -382,7 +352,6 @@ const projects = [
   {
     title: "RADAR Technology Brand Identity",
     category: "Graphic Design",
-    orientation: "landscape",
     image: radarBranding,
     problem: "A technology company needed a modern and technical brand identity.",
     process: "Full brand development including circuit-inspired logo and color system.",
@@ -392,7 +361,6 @@ const projects = [
   {
     title: "Fastbreak Trading Brand Identity",
     category: "Graphic Design",
-    orientation: "landscape",
     image: fastbreakm,
     problem: "Trading company needed a dynamic brand look.",
     process: "Bold logo and full merchandise branding.",
@@ -400,11 +368,10 @@ const projects = [
     outcome: "Memorable brand across all touchpoints.",
   },
 
-  // ==================== Graphic Design — Logos ====================
+  // ==================== Graphic Design — Logos — standard aspect-[16/10] ====================
   {
     title: "Iwacu Remit Logo",
     category: "Graphic Design",
-    orientation: "square",
     image: iwacuremit,
     problem: "Remittance service needed a clean and trustworthy logo.",
     process: "Logo design focused on finance and security.",
@@ -414,7 +381,6 @@ const projects = [
   {
     title: "RADAR Technology Logo",
     category: "Graphic Design",
-    orientation: "square",
     image: radarlogo,
     problem: "Tech company needed a modern and technical brand symbol.",
     process: "Circuit-inspired logo design.",
@@ -424,7 +390,6 @@ const projects = [
   {
     title: "Sunshine Trading Logo",
     category: "Graphic Design",
-    orientation: "square",
     image: sunshinetrading,
     problem: "Trading company needed a global yet local brand mark.",
     process: "Logo design with logistics elements.",
@@ -434,7 +399,6 @@ const projects = [
   {
     title: "Sukaba LLC Logo",
     category: "Graphic Design",
-    orientation: "square",
     image: sukabalogo,
     problem: "Financial consulting firm needed a clean logo.",
     process: "Logo design with growth elements.",
@@ -444,7 +408,6 @@ const projects = [
   {
     title: "Fastbreak Trading Logo",
     category: "Graphic Design",
-    orientation: "square",
     image: fastbreaklogo,
     problem: "Trading company needed a dynamic logo.",
     process: "Bold arrow concept logo.",
@@ -454,7 +417,6 @@ const projects = [
   {
     title: "CRECONNECT Logo",
     category: "Graphic Design",
-    orientation: "square",
     image: crelogocopy,
     problem: "Creative platform needed a simple and modern logo.",
     process: "Infinity-inspired logo design.",
@@ -464,7 +426,6 @@ const projects = [
   {
     title: "GenzuraDrive Logo",
     category: "Graphic Design",
-    orientation: "square",
     image: genzura,
     problem: "Fleet management company needed a modern mobility logo.",
     process: "Multiple logo explorations focused on the mark.",
@@ -473,108 +434,101 @@ const projects = [
   },
 
   // ==================== Graphic Design — Flyers & Posters ====================
+  // These are the ONLY cards that get custom aspect ratios.
+  // isFlyer: true  →  no description block shown
+  // flyerOrientation: "portrait" → aspect-[3/4]  |  "square" → aspect-square
   {
     title: "Spicy Burger – CraveHaus Flyer",
     category: "Graphic Design",
-    orientation: "portrait",
     image: burgerFlyer,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
   {
     title: "African Queen – Culture Poster",
     category: "Graphic Design",
-    orientation: "portrait",
     image: africaqueen,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
   {
     title: "Batife Premium Gadgets – Business Flyer",
     category: "Graphic Design",
-    orientation: "square",
     image: bestgadgetsflyer,
+    isFlyer: true,
+    flyerOrientation: "square",
   },
   {
     title: "GenzuraDrive – Car Promo Flyer",
     category: "Graphic Design",
-    orientation: "square",
     image: carFlyer,
+    isFlyer: true,
+    flyerOrientation: "square",
   },
   {
     title: "Auto Plug – Car Sales Flyer",
     category: "Graphic Design",
-    orientation: "portrait",
     image: carrental,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
   {
     title: "Dove Body Love – Product Ad",
     category: "Graphic Design",
-    orientation: "portrait",
     image: doveProduct,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
   {
     title: "Best Gadgets – Tech Store Flyer",
     category: "Graphic Design",
-    orientation: "portrait",
     image: f1,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
   {
     title: "Africa Summing – Farmer's Day Poster",
     category: "Graphic Design",
-    orientation: "square",
     image: farmersDay,
+    isFlyer: true,
+    flyerOrientation: "square",
   },
   {
     title: "Good Food Good Vibes – Restaurant Flyer",
     category: "Graphic Design",
-    orientation: "square",
     image: plateflyer,
+    isFlyer: true,
+    flyerOrientation: "square",
   },
   {
     title: "Leomasucre – Fresh Juice Product Ad",
     category: "Graphic Design",
-    orientation: "portrait",
     image: productFlyer,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
   {
     title: "GEL-KAYANO 14 – Shoe Product Poster",
     category: "Graphic Design",
-    orientation: "portrait",
     image: shoeflyer,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
   {
     title: "International Women's Day – CRenet Poster",
     category: "Graphic Design",
-    orientation: "square",
     image: womensDayFlyer,
+    isFlyer: true,
+    flyerOrientation: "square",
   },
   {
     title: "Yura Fresh Juice – Product Flyer",
     category: "Graphic Design",
-    orientation: "portrait",
     image: freshjuiceFlyer,
+    isFlyer: true,
+    flyerOrientation: "portrait",
   },
 ];
-
-// Flyer titles — cards that show image only, no description block
-const FLYER_TITLES = new Set([
-  "Spicy Burger – CraveHaus Flyer",
-  "African Queen – Culture Poster",
-  "Batife Premium Gadgets – Business Flyer",
-  "GenzuraDrive – Car Promo Flyer",
-  "Auto Plug – Car Sales Flyer",
-  "Dove Body Love – Product Ad",
-  "Best Gadgets – Tech Store Flyer",
-  "Africa Summing – Farmer's Day Poster",
-  "Good Food Good Vibes – Restaurant Flyer",
-  "Leomasucre – Fresh Juice Product Ad",
-  "GEL-KAYANO 14 – Shoe Product Poster",
-  "International Women's Day – CRenet Poster",
-  "Yura Fresh Juice – Product Flyer",
-]);
-
-function getAspectClass(orientation: string) {
-  if (orientation === "portrait") return "aspect-[3/4]";
-  if (orientation === "square") return "aspect-square";
-  return "aspect-[16/10]";
-}
 
 const ProjectsSection = () => {
   const ref = useRef(null);
@@ -622,13 +576,12 @@ const ProjectsSection = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {filtered.map((project, i) => {
-            const orientation = project.orientation ?? "landscape";
-            const aspectClass = getAspectClass(orientation);
-            // Logos use object-contain so the mark is never clipped
-            const fitClass = orientation === "square" ? "object-contain" : "object-cover";
-            // Logos get a subtle background so contain doesn't look bare
-            const bgClass = orientation === "square" ? "bg-muted/30" : "";
-            const flyerCard = FLYER_TITLES.has(project.title);
+            // Only flyers get a custom aspect ratio — everything else is 16/10
+            const imageContainerClass = project.isFlyer
+              ? project.flyerOrientation === "portrait"
+                ? "aspect-[3/4]"
+                : "aspect-square"
+              : "aspect-[16/10]";
 
             return (
               <motion.div
@@ -638,13 +591,13 @@ const ProjectsSection = () => {
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 className="group rounded-3xl overflow-hidden bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-2xl"
               >
-                {/* Image — aspect ratio matches the image's natural shape */}
-                <div className={`overflow-hidden ${aspectClass} ${bgClass}`}>
+                {/* Image container */}
+                <div className={`overflow-hidden ${imageContainerClass}`}>
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className={`w-full h-full ${fitClass} group-hover:scale-105 transition-transform duration-700`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
 
@@ -657,8 +610,8 @@ const ProjectsSection = () => {
                     {project.title}
                   </h3>
 
-                  {/* Description only for non-flyer cards */}
-                  {!flyerCard && project.problem && (
+                  {/* Description block — hidden for flyers, shown for everything else */}
+                  {!project.isFlyer && project.problem && (
                     <div className="space-y-3 text-sm text-muted-foreground">
                       <p>
                         <span className="font-semibold text-foreground">Problem: </span>
