@@ -1,5 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { ExternalLink } from "lucide-react";
+
+// ─── Case study page + data ────────────────────────────────────────────────
+import ProjectCaseStudyPage, {
+  ProjectDetail,
+  projectDetails,
+} from "@/components/ProjectCaseStudyPage";
 
 // Import ALL your project images
 import crebranding from "@/assets/crebranding.png";
@@ -56,490 +63,124 @@ import freshjuiceFlyer from "@/assets/freshjuice_flyer.png";
 
 const filters = ["All", "UI/UX", "Web Design", "App Design", "Graphic Design"];
 
-// isFlyer flag is ONLY set on the actual flyer/poster cards in Graphic Design.
-// Everything else has no isFlyer flag and gets the standard 16/10 treatment.
-// flyerOrientation controls the aspect ratio for that specific flyer:
-//   "portrait" → aspect-[3/4]   (tall flyers like Burger, Dove, Shoe, etc.)
-//   "square"   → aspect-square  (square social media posts like Farmer's Day, Women's Day)
+interface Project {
+  title: string;
+  category: string;
+  image: string;
+  problem?: string;
+  process?: string;
+  solution?: string;
+  outcome?: string;
+  isFlyer?: boolean;
+  flyerOrientation?: "portrait" | "square";
+}
 
-const projects = [
-  // ==================== UI/UX — standard aspect-[16/10] object-cover ====================
-  {
-    title: "GreenRide Meter App",
-    category: "UI/UX",
-    image: meterapp,
-    problem: "Taxi drivers needed a simple and accurate fare calculation tool.",
-    process: "User research, wireframing, prototyping, and testing.",
-    solution: "Clean dark-themed mobile app with real-time tracking.",
-    outcome: "Successfully adopted by local taxi drivers.",
-  },
-  {
-    title: "Dating App Redesign",
-    category: "UI/UX",
-    image: dateapp,
-    problem: "Users found dating apps cluttered and unsafe.",
-    process: "User interviews and interface refinement.",
-    solution: "Modern, safe, and intuitive dating experience.",
-    outcome: "Improved user engagement and trust.",
-  },
-  {
-    title: "Clothing & Fashion App",
-    category: "UI/UX",
-    image: clothingapp,
-    problem: "Users needed a modern and trendy fashion shopping experience.",
-    process: "Mobile-first UI design with smooth browsing and cart flow.",
-    solution: "Elegant fashion app with promo codes, collections, and quick add-to-cart.",
-    outcome: "Engaging shopping experience with strong visual appeal.",
-  },
-  {
-    title: "KPI Stock Management Dashboard",
-    category: "UI/UX",
-    image: kpiweb,
-    problem: "Complex inventory system was hard to monitor.",
-    process: "Dashboard UI focused on clarity and insights.",
-    solution: "Real-time analytics dashboard with intuitive layout.",
-    outcome: "Better visibility for the team.",
-  },
-  {
-    title: "FitTrack Mobile App",
-    category: "UI/UX",
-    image: projectMobile1,
-    problem: "Users struggled to track fitness progress consistently.",
-    process: "User research, wireframing, prototyping, usability testing.",
-    solution: "Clean dark-theme mobile app with intuitive dashboard.",
-    outcome: "40% increase in daily active users within 3 months.",
-  },
-  {
-    title: "CReconnect Studio Finder",
-    category: "UI/UX",
-    image: creweb,
-    problem: "Difficult to discover creative studios in Kigali.",
-    process: "Platform interface design with strong search experience.",
-    solution: "Modern directory platform with excellent UX.",
-    outcome: "Helpful platform for creatives and clients.",
-  },
-  {
-    title: "Recruitment Dashboard",
-    category: "UI/UX",
-    image: dashboard,
-    problem: "Recruiters needed a clean overview of applications.",
-    process: "Dashboard UI design focused on clarity and quick actions.",
-    solution: "Modern recruitment dashboard with calendar and applicant tracking.",
-    outcome: "Improved hiring workflow efficiency.",
-  },
+const projects: Project[] = [
+  // ==================== UI/UX ====================
+  { title: "GreenRide Meter App", category: "UI/UX", image: meterapp, problem: "Taxi drivers needed a simple and accurate fare calculation tool.", process: "User research, wireframing, prototyping, and testing.", solution: "Clean dark-themed mobile app with real-time tracking.", outcome: "Successfully adopted by local taxi drivers." },
+  { title: "Dating App Redesign", category: "UI/UX", image: dateapp, problem: "Users found dating apps cluttered and unsafe.", process: "User interviews and interface refinement.", solution: "Modern, safe, and intuitive dating experience.", outcome: "Improved user engagement and trust." },
+  { title: "Clothing & Fashion App", category: "UI/UX", image: clothingapp, problem: "Users needed a modern and trendy fashion shopping experience.", process: "Mobile-first UI design with smooth browsing and cart flow.", solution: "Elegant fashion app with promo codes, collections, and quick add-to-cart.", outcome: "Engaging shopping experience with strong visual appeal." },
+  { title: "KPI Stock Management Dashboard", category: "UI/UX", image: kpiweb, problem: "Complex inventory system was hard to monitor.", process: "Dashboard UI focused on clarity and insights.", solution: "Real-time analytics dashboard with intuitive layout.", outcome: "Better visibility for the team." },
+  { title: "FitTrack Mobile App", category: "UI/UX", image: projectMobile1, problem: "Users struggled to track fitness progress consistently.", process: "User research, wireframing, prototyping, usability testing.", solution: "Clean dark-theme mobile app with intuitive dashboard.", outcome: "40% increase in daily active users within 3 months." },
+  { title: "CReconnect Studio Finder", category: "UI/UX", image: creweb, problem: "Difficult to discover creative studios in Kigali.", process: "Platform interface design with strong search experience.", solution: "Modern directory platform with excellent UX.", outcome: "Helpful platform for creatives and clients." },
+  { title: "Recruitment Dashboard", category: "UI/UX", image: dashboard, problem: "Recruiters needed a clean overview of applications.", process: "Dashboard UI design focused on clarity and quick actions.", solution: "Modern recruitment dashboard with calendar and applicant tracking.", outcome: "Improved hiring workflow efficiency." },
 
-  // ==================== Web Design — standard aspect-[16/10] object-cover ====================
-  {
-    title: "Iwacu Coffee Website",
-    category: "Web Design",
-    image: iwacucoffee,
-    problem: "Coffee brand lacked an engaging online presence.",
-    process: "Atmospheric web design with strong visuals.",
-    solution: "Elegant website showcasing coffee and brand story.",
-    outcome: "Strong digital brand representation.",
-  },
-  {
-    title: "Logistics Company Website",
-    category: "Web Design",
-    image: logisticweb,
-    problem: "Needed a professional and trustworthy website.",
-    process: "Corporate web design focused on services.",
-    solution: "Clean modern logistics website.",
-    outcome: "Increased client trust.",
-  },
-  {
-    title: "E-Commerce Platform Redesign",
-    category: "Web Design",
-    image: projectWeb1,
-    problem: "Low conversion rate on existing e-commerce site.",
-    process: "Competitive analysis, user journey mapping, A/B testing.",
-    solution: "Modernized UI with streamlined checkout flow.",
-    outcome: "15% increase in conversion rate, 25% reduction in cart abandonment.",
-  },
-  {
-    title: "Furniture Store Website",
-    category: "Web Design",
-    image: furniturewebM,
-    problem: "Furniture needed better product presentation online.",
-    process: "Visual-first web design.",
-    solution: "Modern furniture website with lifestyle imagery.",
-    outcome: "Attractive online store presence.",
-  },
-  {
-    title: "Healthcare Website",
-    category: "Web Design",
-    image: hospitalweb,
-    problem: "Medical services needed a professional digital presence.",
-    process: "Trust-building healthcare web design.",
-    solution: "Calming and professional healthcare website.",
-    outcome: "Increased patient confidence.",
-  },
-  {
-    title: "Kaze Restaurant Website",
-    category: "Web Design",
-    image: kazerestraurant,
-    problem: "Restaurant needed an appetizing online presence.",
-    process: "Food photography and booking flow.",
-    solution: "Delicious restaurant website with table booking.",
-    outcome: "Increased online reservations.",
-  },
-  {
-    title: "Gaming Website - KriGame",
-    category: "Web Design",
-    image: gamewebdesign,
-    problem: "Gaming brand needed an energetic and modern website.",
-    process: "Dark theme, dynamic hero, product showcase.",
-    solution: "High-energy gaming website with immersive visuals.",
-    outcome: "Strong appeal to gaming audience.",
-  },
-  {
-    title: "Cake & Bakery Website",
-    category: "Web Design",
-    image: cakeweb,
-    problem: "Bakery needed attractive product display online.",
-    process: "Visual-first web design with mouth-watering imagery.",
-    solution: "Elegant cake shop website with product catalog.",
-    outcome: "Beautiful online bakery presence.",
-  },
-  {
-    title: "OLC Web Design",
-    category: "Web Design",
-    image: olcwebdesign,
-    problem: "Restaurant needed a modern and appetizing website.",
-    process: "Food-focused web design.",
-    solution: "Clean and inviting food outlet website.",
-    outcome: "Improved online ordering experience.",
-  },
-  {
-    title: "KPI Stock Management Dashboard",
-    category: "Web Design",
-    image: kpiweb,
-    problem: "Complex inventory system was hard to monitor.",
-    process: "Dashboard design focused on clarity.",
-    solution: "Real-time analytics dashboard.",
-    outcome: "Better inventory visibility.",
-  },
-  {
-    title: "CReconnect Studio Finder",
-    category: "Web Design",
-    image: creweb,
-    problem: "Hard to discover creative studios in Kigali.",
-    process: "Platform design with powerful search.",
-    solution: "Modern directory website for creative spaces.",
-    outcome: "Helpful platform for creatives.",
-  },
-  {
-    title: "Recruitment Dashboard",
-    category: "Web Design",
-    image: dashboard,
-    problem: "Recruiters needed a clean overview of applications.",
-    process: "Dashboard UI design focused on clarity and quick actions.",
-    solution: "Modern recruitment dashboard with calendar and applicant tracking.",
-    outcome: "Improved hiring workflow efficiency.",
-  },
+  // ==================== Web Design ====================
+  { title: "Iwacu Coffee Website", category: "Web Design", image: iwacucoffee, problem: "Coffee brand lacked an engaging online presence.", process: "Atmospheric web design with strong visuals.", solution: "Elegant website showcasing coffee and brand story.", outcome: "Strong digital brand representation." },
+  { title: "Logistics Company Website", category: "Web Design", image: logisticweb, problem: "Needed a professional and trustworthy website.", process: "Corporate web design focused on services.", solution: "Clean modern logistics website.", outcome: "Increased client trust." },
+  { title: "E-Commerce Platform Redesign", category: "Web Design", image: projectWeb1, problem: "Low conversion rate on existing e-commerce site.", process: "Competitive analysis, user journey mapping, A/B testing.", solution: "Modernized UI with streamlined checkout flow.", outcome: "15% increase in conversion rate, 25% reduction in cart abandonment." },
+  { title: "Furniture Store Website", category: "Web Design", image: furniturewebM, problem: "Furniture needed better product presentation online.", process: "Visual-first web design.", solution: "Modern furniture website with lifestyle imagery.", outcome: "Attractive online store presence." },
+  { title: "Healthcare Website", category: "Web Design", image: hospitalweb, problem: "Medical services needed a professional digital presence.", process: "Trust-building healthcare web design.", solution: "Calming and professional healthcare website.", outcome: "Increased patient confidence." },
+  { title: "Kaze Restaurant Website", category: "Web Design", image: kazerestraurant, problem: "Restaurant needed an appetizing online presence.", process: "Food photography and booking flow.", solution: "Delicious restaurant website with table booking.", outcome: "Increased online reservations." },
+  { title: "Gaming Website - KriGame", category: "Web Design", image: gamewebdesign, problem: "Gaming brand needed an energetic and modern website.", process: "Dark theme, dynamic hero, product showcase.", solution: "High-energy gaming website with immersive visuals.", outcome: "Strong appeal to gaming audience." },
+  { title: "Cake & Bakery Website", category: "Web Design", image: cakeweb, problem: "Bakery needed attractive product display online.", process: "Visual-first web design with mouth-watering imagery.", solution: "Elegant cake shop website with product catalog.", outcome: "Beautiful online bakery presence." },
+  { title: "OLC Web Design", category: "Web Design", image: olcwebdesign, problem: "Restaurant needed a modern and appetizing website.", process: "Food-focused web design.", solution: "Clean and inviting food outlet website.", outcome: "Improved online ordering experience." },
+  { title: "KPI Stock Management Dashboard", category: "Web Design", image: kpiweb, problem: "Complex inventory system was hard to monitor.", process: "Dashboard design focused on clarity.", solution: "Real-time analytics dashboard.", outcome: "Better inventory visibility." },
+  { title: "CReconnect Studio Finder", category: "Web Design", image: creweb, problem: "Hard to discover creative studios in Kigali.", process: "Platform design with powerful search.", solution: "Modern directory website for creative spaces.", outcome: "Helpful platform for creatives." },
+  { title: "Recruitment Dashboard", category: "Web Design", image: dashboard, problem: "Recruiters needed a clean overview of applications.", process: "Dashboard UI design focused on clarity and quick actions.", solution: "Modern recruitment dashboard with calendar and applicant tracking.", outcome: "Improved hiring workflow efficiency." },
 
-  // ==================== App Design — standard aspect-[16/10] object-cover ====================
-  {
-    title: "BlissCoffee Mobile App",
-    category: "App Design",
-    image: coffeeapp,
-    problem: "Coffee brand needed an immersive mobile ordering experience.",
-    process: "Dark-themed mobile UI with product discovery and cart flow.",
-    solution: "Rich coffee app with category browsing, item details, and ordering.",
-    outcome: "Elevated mobile brand experience for coffee lovers.",
-  },
-  {
-    title: "GreenRide Meter App",
-    category: "App Design",
-    image: meterapp,
-    problem: "Taxi drivers needed a simple and accurate fare calculation tool.",
-    process: "User research, wireframing, prototyping, and testing.",
-    solution: "Clean dark-themed mobile app with real-time tracking.",
-    outcome: "Successfully adopted by local taxi drivers.",
-  },
-  {
-    title: "Dating App Redesign",
-    category: "App Design",
-    image: dateapp,
-    problem: "Users found dating apps cluttered and unsafe.",
-    process: "User interviews and interface refinement.",
-    solution: "Modern, safe, and intuitive dating experience.",
-    outcome: "Improved user engagement and trust.",
-  },
-  {
-    title: "Food Ordering App",
-    category: "App Design",
-    image: foodorderapp,
-    problem: "Complicated food ordering process frustrated users.",
-    process: "User testing and flow optimization.",
-    solution: "Smooth and beautiful food delivery interface.",
-    outcome: "Faster ordering and higher satisfaction.",
-  },
-  {
-    title: "FitTrack Mobile App",
-    category: "App Design",
-    image: projectMobile1,
-    problem: "Users struggled to track fitness progress consistently.",
-    process: "User research, wireframing, prototyping, usability testing.",
-    solution: "Clean dark-theme mobile app with intuitive dashboard.",
-    outcome: "40% increase in daily active users within 3 months.",
-  },
-  {
-    title: "Food Delivery App",
-    category: "App Design",
-    image: projectMobile2,
-    problem: "Users found existing food ordering apps confusing.",
-    process: "User interviews, information architecture, iterative design.",
-    solution: "Multi-screen mobile app with simplified ordering flow.",
-    outcome: "Reduced average order time by 45 seconds.",
-  },
-  {
-    title: "Luxury Car Rental App",
-    category: "App Design",
-    image: rentalapp,
-    problem: "Car rental booking was slow and confusing.",
-    process: "Premium mobile-first design.",
-    solution: "Elegant car rental app with easy booking flow.",
-    outcome: "Simplified premium rental experience.",
-  },
-  {
-    title: "BlissCoffee Mobile App v2",
-    category: "App Design",
-    image: coffeeapp2,
-    problem: "Coffee shop app needed better product display and ordering.",
-    process: "Mobile UI with customization options.",
-    solution: "Modern coffee app with size and ingredient selection.",
-    outcome: "Enhanced mobile ordering experience.",
-  },
-  {
-    title: "Clothing & Fashion App",
-    category: "App Design",
-    image: clothingapp,
-    problem: "Users needed a modern and trendy fashion shopping experience.",
-    process: "Mobile-first UI design with smooth browsing and cart flow.",
-    solution: "Elegant fashion app with promo codes, collections, and quick add-to-cart.",
-    outcome: "Engaging shopping experience with strong visual appeal.",
-  },
+  // ==================== App Design ====================
+  { title: "BlissCoffee Mobile App", category: "App Design", image: coffeeapp, problem: "Coffee brand needed an immersive mobile ordering experience.", process: "Dark-themed mobile UI with product discovery and cart flow.", solution: "Rich coffee app with category browsing, item details, and ordering.", outcome: "Elevated mobile brand experience for coffee lovers." },
+  { title: "GreenRide Meter App", category: "App Design", image: meterapp, problem: "Taxi drivers needed a simple and accurate fare calculation tool.", process: "User research, wireframing, prototyping, and testing.", solution: "Clean dark-themed mobile app with real-time tracking.", outcome: "Successfully adopted by local taxi drivers." },
+  { title: "Dating App Redesign", category: "App Design", image: dateapp, problem: "Users found dating apps cluttered and unsafe.", process: "User interviews and interface refinement.", solution: "Modern, safe, and intuitive dating experience.", outcome: "Improved user engagement and trust." },
+  { title: "Food Ordering App", category: "App Design", image: foodorderapp, problem: "Complicated food ordering process frustrated users.", process: "User testing and flow optimization.", solution: "Smooth and beautiful food delivery interface.", outcome: "Faster ordering and higher satisfaction." },
+  { title: "FitTrack Mobile App", category: "App Design", image: projectMobile1, problem: "Users struggled to track fitness progress consistently.", process: "User research, wireframing, prototyping, usability testing.", solution: "Clean dark-theme mobile app with intuitive dashboard.", outcome: "40% increase in daily active users within 3 months." },
+  { title: "Food Delivery App", category: "App Design", image: projectMobile2, problem: "Users found existing food ordering apps confusing.", process: "User interviews, information architecture, iterative design.", solution: "Multi-screen mobile app with simplified ordering flow.", outcome: "Reduced average order time by 45 seconds." },
+  { title: "Luxury Car Rental App", category: "App Design", image: rentalapp, problem: "Car rental booking was slow and confusing.", process: "Premium mobile-first design.", solution: "Elegant car rental app with easy booking flow.", outcome: "Simplified premium rental experience." },
+  { title: "BlissCoffee Mobile App v2", category: "App Design", image: coffeeapp2, problem: "Coffee shop app needed better product display and ordering.", process: "Mobile UI with customization options.", solution: "Modern coffee app with size and ingredient selection.", outcome: "Enhanced mobile ordering experience." },
+  { title: "Clothing & Fashion App", category: "App Design", image: clothingapp, problem: "Users needed a modern and trendy fashion shopping experience.", process: "Mobile-first UI design with smooth browsing and cart flow.", solution: "Elegant fashion app with promo codes, collections, and quick add-to-cart.", outcome: "Engaging shopping experience with strong visual appeal." },
 
-  // ==================== Graphic Design — Brand Identities — standard aspect-[16/10] ====================
-  {
-    title: "CRECONNECT Brand Identity",
-    category: "Graphic Design",
-    image: crebranding,
-    problem: "New creative platform needed a strong memorable brand.",
-    process: "Logo design and full brand system.",
-    solution: "Modern infinity logo with complete collateral.",
-    outcome: "Professional and cohesive brand identity.",
-  },
-  {
-    title: "Sukaba LLC Brand Identity",
-    category: "Graphic Design",
-    image: sukababranding,
-    problem: "Consulting firm needed a trustworthy corporate identity.",
-    process: "Logo and full branding package.",
-    solution: "Growth-oriented logo with business stationery.",
-    outcome: "Strong professional brand presence.",
-  },
-  {
-    title: "Brand Identity – Isanny Court",
-    category: "Graphic Design",
-    image: projectBranding1,
-    problem: "New hospitality brand needed a premium visual identity.",
-    process: "Brand strategy workshop, mood boards, multiple iterations.",
-    solution: "Complete brand package: logo, stationery, business cards.",
-    outcome: "Successfully launched brand with consistent recognition.",
-  },
-  {
-    title: "RADAR Technology Brand Identity",
-    category: "Graphic Design",
-    image: radarBranding,
-    problem: "A technology company needed a modern and technical brand identity.",
-    process: "Full brand development including circuit-inspired logo and color system.",
-    solution: "Clean stylized 'R' logo with circuit elements in professional blue tones.",
-    outcome: "Powerful and cohesive brand presence.",
-  },
-  {
-    title: "Fastbreak Trading Brand Identity",
-    category: "Graphic Design",
-    image: fastbreakm,
-    problem: "Trading company needed a dynamic brand look.",
-    process: "Bold logo and full merchandise branding.",
-    solution: "Energetic arrow logo with complete assets.",
-    outcome: "Memorable brand across all touchpoints.",
-  },
+  // ==================== Graphic Design — Brand Identities ====================
+  { title: "CRECONNECT Brand Identity", category: "Graphic Design", image: crebranding, problem: "New creative platform needed a strong memorable brand.", process: "Logo design and full brand system.", solution: "Modern infinity logo with complete collateral.", outcome: "Professional and cohesive brand identity." },
+  { title: "Sukaba LLC Brand Identity", category: "Graphic Design", image: sukababranding, problem: "Consulting firm needed a trustworthy corporate identity.", process: "Logo and full branding package.", solution: "Growth-oriented logo with business stationery.", outcome: "Strong professional brand presence." },
+  { title: "Brand Identity – Isanny Court", category: "Graphic Design", image: projectBranding1, problem: "New hospitality brand needed a premium visual identity.", process: "Brand strategy workshop, mood boards, multiple iterations.", solution: "Complete brand package: logo, stationery, business cards.", outcome: "Successfully launched brand with consistent recognition." },
+  { title: "RADAR Technology Brand Identity", category: "Graphic Design", image: radarBranding, problem: "A technology company needed a modern and technical brand identity.", process: "Full brand development including circuit-inspired logo and color system.", solution: "Clean stylized 'R' logo with circuit elements in professional blue tones.", outcome: "Powerful and cohesive brand presence." },
+  { title: "Fastbreak Trading Brand Identity", category: "Graphic Design", image: fastbreakm, problem: "Trading company needed a dynamic brand look.", process: "Bold logo and full merchandise branding.", solution: "Energetic arrow logo with complete assets.", outcome: "Memorable brand across all touchpoints." },
 
-  // ==================== Graphic Design — Logos — standard aspect-[16/10] ====================
-  {
-    title: "Iwacu Remit Logo",
-    category: "Graphic Design",
-    image: iwacuremit,
-    problem: "Remittance service needed a clean and trustworthy logo.",
-    process: "Logo design focused on finance and security.",
-    solution: "Modern shield-inspired logo for Iwacu Remit.",
-    outcome: "Clear and professional brand mark.",
-  },
-  {
-    title: "RADAR Technology Logo",
-    category: "Graphic Design",
-    image: radarlogo,
-    problem: "Tech company needed a modern and technical brand symbol.",
-    process: "Circuit-inspired logo design.",
-    solution: "Stylized R logo representing technology and connectivity.",
-    outcome: "Strong tech brand identity.",
-  },
-  {
-    title: "Sunshine Trading Logo",
-    category: "Graphic Design",
-    image: sunshinetrading,
-    problem: "Trading company needed a global yet local brand mark.",
-    process: "Logo design with logistics elements.",
-    solution: "Professional trading company logo.",
-    outcome: "Strong market brand presence.",
-  },
-  {
-    title: "Sukaba LLC Logo",
-    category: "Graphic Design",
-    image: sukabalogo,
-    problem: "Financial consulting firm needed a clean logo.",
-    process: "Logo design with growth elements.",
-    solution: "Upward-trending logo for Sukaba LLC.",
-    outcome: "Professional corporate logo.",
-  },
-  {
-    title: "Fastbreak Trading Logo",
-    category: "Graphic Design",
-    image: fastbreaklogo,
-    problem: "Trading company needed a dynamic logo.",
-    process: "Bold arrow concept logo.",
-    solution: "Circular arrow logo for Fastbreak Trading.",
-    outcome: "Memorable trading logo.",
-  },
-  {
-    title: "CRECONNECT Logo",
-    category: "Graphic Design",
-    image: crelogocopy,
-    problem: "Creative platform needed a simple and modern logo.",
-    process: "Infinity-inspired logo design.",
-    solution: "Clean infinity symbol logo.",
-    outcome: "Strong minimalist logo.",
-  },
-  {
-    title: "GenzuraDrive Logo",
-    category: "Graphic Design",
-    image: genzura,
-    problem: "Fleet management company needed a modern mobility logo.",
-    process: "Multiple logo explorations focused on the mark.",
-    solution: "Dynamic and contemporary GenzuraDrive logo.",
-    outcome: "Clear and modern logo for the brand.",
-  },
+  // ==================== Graphic Design — Logos ====================
+  { title: "Iwacu Remit Logo", category: "Graphic Design", image: iwacuremit, problem: "Remittance service needed a clean and trustworthy logo.", process: "Logo design focused on finance and security.", solution: "Modern shield-inspired logo for Iwacu Remit.", outcome: "Clear and professional brand mark." },
+  { title: "RADAR Technology Logo", category: "Graphic Design", image: radarlogo, problem: "Tech company needed a modern and technical brand symbol.", process: "Circuit-inspired logo design.", solution: "Stylized R logo representing technology and connectivity.", outcome: "Strong tech brand identity." },
+  { title: "Sunshine Trading Logo", category: "Graphic Design", image: sunshinetrading, problem: "Trading company needed a global yet local brand mark.", process: "Logo design with logistics elements.", solution: "Professional trading company logo.", outcome: "Strong market brand presence." },
+  { title: "Sukaba LLC Logo", category: "Graphic Design", image: sukabalogo, problem: "Financial consulting firm needed a clean logo.", process: "Logo design with growth elements.", solution: "Upward-trending logo for Sukaba LLC.", outcome: "Professional corporate logo." },
+  { title: "Fastbreak Trading Logo", category: "Graphic Design", image: fastbreaklogo, problem: "Trading company needed a dynamic logo.", process: "Bold arrow concept logo.", solution: "Circular arrow logo for Fastbreak Trading.", outcome: "Memorable trading logo." },
+  { title: "CRECONNECT Logo", category: "Graphic Design", image: crelogocopy, problem: "Creative platform needed a simple and modern logo.", process: "Infinity-inspired logo design.", solution: "Clean infinity symbol logo.", outcome: "Strong minimalist logo." },
+  { title: "GenzuraDrive Logo", category: "Graphic Design", image: genzura, problem: "Fleet management company needed a modern mobility logo.", process: "Multiple logo explorations focused on the mark.", solution: "Dynamic and contemporary GenzuraDrive logo.", outcome: "Clear and modern logo for the brand." },
 
   // ==================== Graphic Design — Flyers & Posters ====================
-  // These are the ONLY cards that get custom aspect ratios.
-  // isFlyer: true  →  no description block shown
-  // flyerOrientation: "portrait" → aspect-[3/4]  |  "square" → aspect-square
-  {
-    title: "Spicy Burger – CraveHaus Flyer",
-    category: "Graphic Design",
-    image: burgerFlyer,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
-  {
-    title: "African Queen – Culture Poster",
-    category: "Graphic Design",
-    image: africaqueen,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
-  {
-    title: "Batife Premium Gadgets – Business Flyer",
-    category: "Graphic Design",
-    image: bestgadgetsflyer,
-    isFlyer: true,
-    flyerOrientation: "square",
-  },
-  {
-    title: "GenzuraDrive – Car Promo Flyer",
-    category: "Graphic Design",
-    image: carFlyer,
-    isFlyer: true,
-    flyerOrientation: "square",
-  },
-  {
-    title: "Auto Plug – Car Sales Flyer",
-    category: "Graphic Design",
-    image: carrental,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
-  {
-    title: "Dove Body Love – Product Ad",
-    category: "Graphic Design",
-    image: doveProduct,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
-  {
-    title: "Best Gadgets – Tech Store Flyer",
-    category: "Graphic Design",
-    image: f1,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
-  {
-    title: "Africa Summing – Farmer's Day Poster",
-    category: "Graphic Design",
-    image: farmersDay,
-    isFlyer: true,
-    flyerOrientation: "square",
-  },
-  {
-    title: "Good Food Good Vibes – Restaurant Flyer",
-    category: "Graphic Design",
-    image: plateflyer,
-    isFlyer: true,
-    flyerOrientation: "square",
-  },
-  {
-    title: "Leomasucre – Fresh Juice Product Ad",
-    category: "Graphic Design",
-    image: productFlyer,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
-  {
-    title: "GEL-KAYANO 14 – Shoe Product Poster",
-    category: "Graphic Design",
-    image: shoeflyer,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
-  {
-    title: "International Women's Day – CRenet Poster",
-    category: "Graphic Design",
-    image: womensDayFlyer,
-    isFlyer: true,
-    flyerOrientation: "square",
-  },
-  {
-    title: "Yura Fresh Juice – Product Flyer",
-    category: "Graphic Design",
-    image: freshjuiceFlyer,
-    isFlyer: true,
-    flyerOrientation: "portrait",
-  },
+  { title: "Spicy Burger – CraveHaus Flyer", category: "Graphic Design", image: burgerFlyer, isFlyer: true, flyerOrientation: "portrait" },
+  { title: "African Queen – Culture Poster", category: "Graphic Design", image: africaqueen, isFlyer: true, flyerOrientation: "portrait" },
+  { title: "Batife Premium Gadgets – Business Flyer", category: "Graphic Design", image: bestgadgetsflyer, isFlyer: true, flyerOrientation: "square" },
+  { title: "GenzuraDrive – Car Promo Flyer", category: "Graphic Design", image: carFlyer, isFlyer: true, flyerOrientation: "square" },
+  { title: "Auto Plug – Car Sales Flyer", category: "Graphic Design", image: carrental, isFlyer: true, flyerOrientation: "portrait" },
+  { title: "Dove Body Love – Product Ad", category: "Graphic Design", image: doveProduct, isFlyer: true, flyerOrientation: "portrait" },
+  { title: "Best Gadgets – Tech Store Flyer", category: "Graphic Design", image: f1, isFlyer: true, flyerOrientation: "portrait" },
+  { title: "Africa Summing – Farmer's Day Poster", category: "Graphic Design", image: farmersDay, isFlyer: true, flyerOrientation: "square" },
+  { title: "Good Food Good Vibes – Restaurant Flyer", category: "Graphic Design", image: plateflyer, isFlyer: true, flyerOrientation: "square" },
+  { title: "Leomasucre – Fresh Juice Product Ad", category: "Graphic Design", image: productFlyer, isFlyer: true, flyerOrientation: "portrait" },
+  { title: "GEL-KAYANO 14 – Shoe Product Poster", category: "Graphic Design", image: shoeflyer, isFlyer: true, flyerOrientation: "portrait" },
+  { title: "International Women's Day – CRenet Poster", category: "Graphic Design", image: womensDayFlyer, isFlyer: true, flyerOrientation: "square" },
+  { title: "Yura Fresh Juice – Product Flyer", category: "Graphic Design", image: freshjuiceFlyer, isFlyer: true, flyerOrientation: "portrait" },
 ];
 
+// Only these categories get the "Explore More" button
+const DETAIL_CATEGORIES = new Set(["App Design", "Web Design"]);
+
+// ─── Main component ───────────────────────────────────────────────────────────
 const ProjectsSection = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+
   const [activeFilter, setActiveFilter] = useState("All");
+  const [activeCaseStudy, setActiveCaseStudy] = useState<ProjectDetail | null>(null);
 
   const filtered =
     activeFilter === "All"
       ? projects
       : projects.filter((p) => p.category === activeFilter);
 
+  const openCaseStudy = (project: Project) => {
+    const detail = projectDetails.find(
+      (d) => d.title === project.title && d.category === project.category
+    );
+    if (detail) {
+      setActiveCaseStudy(detail);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const closeCaseStudy = () => {
+    setActiveCaseStudy(null);
+    setTimeout(() => {
+      ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  };
+
+  // ── Full-page case study view ──
+  if (activeCaseStudy) {
+    return <ProjectCaseStudyPage project={activeCaseStudy} onBack={closeCaseStudy} />;
+  }
+
+  // ── Normal projects grid ──
   return (
     <section id="projects" className="section-padding bg-card" ref={ref}>
       <div className="max-w-7xl mx-auto">
@@ -576,12 +217,17 @@ const ProjectsSection = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {filtered.map((project, i) => {
-            // Only flyers get a custom aspect ratio — everything else is 16/10
             const imageContainerClass = project.isFlyer
               ? project.flyerOrientation === "portrait"
                 ? "aspect-[3/4]"
                 : "aspect-square"
               : "aspect-[16/10]";
+
+            const hasDetail =
+              DETAIL_CATEGORIES.has(project.category) &&
+              projectDetails.some(
+                (d) => d.title === project.title && d.category === project.category
+              );
 
             return (
               <motion.div
@@ -591,7 +237,7 @@ const ProjectsSection = () => {
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 className="group rounded-3xl overflow-hidden bg-background border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-2xl"
               >
-                {/* Image container */}
+                {/* Image */}
                 <div className={`overflow-hidden ${imageContainerClass}`}>
                   <img
                     src={project.image}
@@ -610,7 +256,7 @@ const ProjectsSection = () => {
                     {project.title}
                   </h3>
 
-                  {/* Description block — hidden for flyers, shown for everything else */}
+                  {/* Description — hidden for flyers */}
                   {!project.isFlyer && project.problem && (
                     <div className="space-y-3 text-sm text-muted-foreground">
                       <p>
@@ -630,6 +276,17 @@ const ProjectsSection = () => {
                         <span className="text-primary font-medium">{project.outcome}</span>
                       </p>
                     </div>
+                  )}
+
+                  {/* Explore More — only App Design & Web Design */}
+                  {hasDetail && (
+                    <button
+                      onClick={() => openCaseStudy(project)}
+                      className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-primary/10 hover:bg-primary hover:text-primary-foreground text-primary border border-primary/20 hover:border-primary transition-all duration-200 group/btn"
+                    >
+                      <ExternalLink className="w-4 h-4 transition-transform group-hover/btn:rotate-12" />
+                      Explore More
+                    </button>
                   )}
                 </div>
               </motion.div>
